@@ -1,0 +1,82 @@
+<form [formGroup]="allphones" (ngSubmit)="addInformation()">
+  <div class="row container-fluid">
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Cadastro de Celulares novos </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Marca</mat-label>
+            <input
+              matInput
+              formControlName="brand"
+              placeholder="Digite a marca"
+            />
+            <mat-hint>Fabricante</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input
+              matInput
+              formControlName="modelDescription"
+              placeholder="Digite o Modelo do celular"
+            />
+            <mat-hint>Especificações</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Cor</mat-label>
+            <input
+              matInput
+              formControlName="color"
+              placeholder="Digite a Cor do Celular"
+            />
+            <mat-hint>Cor</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Capacidade</mat-label>
+            <mat-select formControlName="capacity">
+              <mat-option
+                *ngFor="let anyCapacity of capacityList | keyvalue ; index as i"
+
+              >
+                {{ anyCapacity.value }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Armazenamento do Celular</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Imei 1</mat-label>
+            <input
+              matInput
+              formControlName="imeiOne"
+              placeholder="Digite o imei de número 1"
+            />
+            <mat-hint>Código do celular</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Imei 2</mat-label>
+            <input
+              matInput
+              formControlName="imeiTwo"
+              placeholder="Digite o imei de número 2"
+            />
+            <mat-hint>Código do celular</mat-hint>
+          </mat-form-field>
+        </mat-card-content>
+        <div class="col-4">
+          <button mat-raised-button color="primary" type="submit">
+            Cadastrar
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</form>
+
+<p>{{ allphones.get("brand")?.value }}</p>
