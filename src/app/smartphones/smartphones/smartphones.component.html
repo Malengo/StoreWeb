@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-toolbar-row color="warn">
+    <span>Lista de Todos os Smartphones</span>
+  </mat-toolbar-row>
+  <!-- List of all Phones -->
+  <table mat-table [dataSource]="smartphone" class="mat-elevation-z8">
+    <caption></caption>
+    <!-- Brand Column -->
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef>Marca</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.brand }}</td>
+    </ng-container>
+
+    <!-- ModelDescription Column -->
+    <ng-container matColumnDef="modelDescription">
+      <th mat-header-cell *matHeaderCellDef>Descrição do Modelo</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.modelDescription }}</td>
+    </ng-container>
+
+    <!-- color Column -->
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef>Cor</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.color }}</td>
+    </ng-container>
+
+    <!-- Capacity Column -->
+    <ng-container matColumnDef="capacity">
+      <th mat-header-cell *matHeaderCellDef>Capacidade</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.capacity }}</td>
+    </ng-container>
+
+    <!-- Imei One Column -->
+    <ng-container matColumnDef="imeiOne">
+      <th mat-header-cell *matHeaderCellDef>Imei 1</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.imeiOne }}</td>
+    </ng-container>
+
+    <!-- Imei Two Column -->
+    <ng-container matColumnDef="imeiTwo">
+      <th mat-header-cell *matHeaderCellDef>Imei 2</th>
+      <td mat-cell *matCellDef="let phone">{{ phone.imeiTwo }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>
