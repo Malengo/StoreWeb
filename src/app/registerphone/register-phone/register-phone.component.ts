@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Capacity } from 'src/app/entites/enum/capacity.enum';
-
 
 import { PhoneServiceService } from '../service/phone-service.service';
 
@@ -11,29 +15,39 @@ import { PhoneServiceService } from '../service/phone-service.service';
   styleUrls: ['./register-phone.component.css'],
 })
 export class RegisterPhoneComponent implements OnInit {
-  allphones: FormGroup;
-
+  allphones!: FormGroup;
   keys = Object.values(Capacity);
   constructor(
     private servicePhone: PhoneServiceService,
     private allPhoneForm: FormBuilder
-  ) {
-    this.allphones = this.allPhoneForm.group({
-      brand: [null],
-      modelDescription: [null],
-      color: [null],
-      capacity: [null],
-      imeiOne: [null],
-      imeiTwo: [null],
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
-
+    this.allphones = new FormGroup({
+      brand: new FormControl(),
+      modelDescription: new FormControl(),
+      color: new FormControl(),
+      capacity: new FormControl(),
+      imeiOne: new FormControl('', [
+        Validators.minLength(15),
+        Validators.required,
+      ]),
+      imeiTwo: new FormControl('', [
+        Validators.minLength(15),
+        Validators.required,
+      ]),
+    });
   }
 
   addInformation() {
     this.servicePhone.addPhone(this.allphones.value);
+    if (this.allphones.errors) {
+      console.log(this.allphones.errors);
+    }
     this.allphones.reset();
   }
+  get imeiTwo() {
+    return this.allphones.get('imeiTwo')!;
+  }
+
 }
