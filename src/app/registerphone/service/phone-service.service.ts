@@ -1,5 +1,6 @@
-import { Smartphone } from './../../smartphones/model/entites/smartphone';
+
 import { Injectable } from '@angular/core';
+import { Smartphone } from 'src/app/entites/smartphone';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,7 @@
 import { PhoneServiceService } from './../../registerphone/service/phone-service.service';
-import { Smartphone } from './../model/entites/smartphone';
+
 import { Component, OnInit } from '@angular/core';
+import { Smartphone } from 'src/app/entites/smartphone';
 
 @Component({
   selector: 'app-smartphones',

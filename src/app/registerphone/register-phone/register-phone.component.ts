@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Capacity } from 'src/app/smartphones/model/entites/enum/capacity.enum';
+import { Capacity } from 'src/app/entites/enum/capacity.enum';
+
 
 import { PhoneServiceService } from '../service/phone-service.service';
 
@@ -11,8 +12,8 @@ import { PhoneServiceService } from '../service/phone-service.service';
 })
 export class RegisterPhoneComponent implements OnInit {
   allphones: FormGroup;
-  capacityList = Capacity;
 
+  keys = Object.values(Capacity);
   constructor(
     private servicePhone: PhoneServiceService,
     private allPhoneForm: FormBuilder
@@ -28,7 +29,7 @@ export class RegisterPhoneComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.capacityList);
+
   }
 
   addInformation() {

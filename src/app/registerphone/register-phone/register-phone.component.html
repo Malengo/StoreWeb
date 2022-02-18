@@ -40,10 +40,10 @@
             <mat-label>Capacidade</mat-label>
             <mat-select formControlName="capacity">
               <mat-option
-                *ngFor="let anyCapacity of capacityList | keyvalue ; index as i"
+                *ngFor="let anyCapacity of keys"
 
               >
-                {{ anyCapacity.value }}
+                {{ anyCapacity}}
               </mat-option>
             </mat-select>
             <mat-hint>Armazenamento do Celular</mat-hint>
@@ -80,3 +80,4 @@
 </form>
 
 <p>{{ allphones.get("brand")?.value }}</p>
+
