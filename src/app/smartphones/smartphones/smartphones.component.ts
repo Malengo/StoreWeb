@@ -16,7 +16,7 @@ export class SmartphonesComponent implements OnInit {
     'color',
     'capacity',
     'imeiOne',
-    'imeiTwo',
+    'cpf',
   ];
   constructor(private servicePhone: PhoneServiceService) {}
 

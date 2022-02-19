@@ -4,5 +4,5 @@ export interface Smartphone {
   color: string;
   capacity: string;
   imeiOne: number;
-  imeiTwo: number;
+  CPF: number;
 }

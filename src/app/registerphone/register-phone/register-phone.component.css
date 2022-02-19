@@ -6,4 +6,6 @@
 .text-center{
   margin: auto;
 }
-
+mat-hint{
+  align: auto;
+}

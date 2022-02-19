@@ -59,33 +59,45 @@
               maxlength="15"
               required
             />
-             <mat-hint *ngIf="!allphones.get('imeiOne')?.errors?.['minlength']">Código do celular</mat-hint>
+             <mat-hint *ngIf="!imeiOne.errors?.['minlength'] && !imeiOne.errors?.['pattern']">Código do celular</mat-hint>
 
             <mat-hint
-              class="bg-danger h6 rounded col-6 text-center text-white"
-              *ngIf="allphones.get('imeiOne')?.errors?.['minlength']"
-              >Imei deve conter 15 números</mat-hint
+
+              class="bg-light h6 rounded col-6 text-center text-danger"
+              *ngIf="imeiOne.errors?.['minlength']"
+              >IMEI deve conter 15 números</mat-hint
+            >
+            <mat-hint
+            align="end"
+              class="bg-light h6 rounded col-6 text-center text-danger"
+              *ngIf="imeiOne.errors?.['pattern']"
+              >IMEI deve conter apenas números</mat-hint
             >
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Imei 2</mat-label>
+            <mat-label>CPF</mat-label>
             <input
               id="imeiTwo"
               matInput
-              formControlName="imeiTwo"
-              placeholder="Digite o imei de número 2"
-              minlength="15"
-              maxlength="15"
+              (keyup)="maskBrazilianDoc($event)"
+              formControlName="cpf"
+              placeholder="Digite o CPF"
+              minlength="14"
+              maxlength="14 "
               required
             />
-            <mat-hint *ngIf="!imeiTwo.errors?.['minlength']">Código do celular</mat-hint>
+            <mat-hint *ngIf="!imeiTwo.errors?.['minlength'] && !imeiTwo.errors?.['pattern']">CPF do Comprador</mat-hint>
 
-            <mat-hint
+           <mat-hint
               class="bg-danger h6 rounded col-6 text-center text-white"
               *ngIf="imeiTwo.errors?.['minlength']"
-              >Imei deve conter 15 números</mat-hint
-            >
+              >CPF deve conter 12 números</mat-hint>
+            <mat-hint
+            align="end"
+              class="bg-danger h6 rounded col-6 text-center text-white"
+              *ngIf="imeiTwo.errors?.['pattern']"
+              >CPF Inválido</mat-hint>
           </mat-form-field>
         </mat-card-content>
         <div class="col-4">
