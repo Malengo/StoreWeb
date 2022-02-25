@@ -2,6 +2,7 @@ import { PhoneServiceService } from './../../registerphone/service/phone-service
 
 import { Component, OnInit } from '@angular/core';
 import { Smartphone } from 'src/app/entites/smartphone';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-smartphones',
@@ -9,18 +10,19 @@ import { Smartphone } from 'src/app/entites/smartphone';
   styleUrls: ['./smartphones.component.css'],
 })
 export class SmartphonesComponent implements OnInit {
-  smartphone: Smartphone[] = [];
+  smartphone: Observable<Smartphone[]>;
   displayedColumns = [
     'brand',
     'modelDescription',
     'color',
     'capacity',
+    'memory',
     'imeiOne',
-    'cpf',
+    'imeiTwo',
   ];
-  constructor(private servicePhone: PhoneServiceService) {}
-
-  ngOnInit(): void {
-    this.smartphone = this.servicePhone.allphone();
+  constructor(private servicePhone: PhoneServiceService) {
+     this.smartphone = this.servicePhone.allphone();
   }
+
+  ngOnInit(): void {}
 }

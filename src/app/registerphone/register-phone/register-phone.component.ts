@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Capacity } from 'src/app/entites/enum/capacity.enum';
+import { Memory } from 'src/app/entites/enum/Memory.enum';
 
 import { PhoneServiceService } from '../service/phone-service.service';
 
@@ -17,6 +18,7 @@ import { PhoneServiceService } from '../service/phone-service.service';
 export class RegisterPhoneComponent implements OnInit {
   allphones!: FormGroup;
   keys = Object.values(Capacity);
+  keysMemory = Object.values(Memory);
   formater: String = '';
 
   constructor(
@@ -30,15 +32,16 @@ export class RegisterPhoneComponent implements OnInit {
       modelDescription: new FormControl(),
       color: new FormControl(),
       capacity: new FormControl(),
+      memory: new FormControl(),
       imeiOne: new FormControl('', [
         Validators.minLength(15),
         Validators.required,
         Validators.pattern('^[0-9]*$'),
       ]),
-      cpf: new FormControl('', [
+      imeiTwo: new FormControl('', [
         Validators.minLength(14),
         Validators.required,
-        Validators.pattern(/^(\d{3}\.){2}\d{3}\-\d{2}$/),
+        Validators.pattern('^[0-9]*$'),
       ]),
     });
   }
@@ -47,14 +50,15 @@ export class RegisterPhoneComponent implements OnInit {
     this.servicePhone.addPhone(this.allphones.value);
     this.allphones.reset();
   }
+
   get imeiTwo() {
-    return this.allphones.get('cpf')!;
+    return this.allphones.get('imeiTwo')!;
   }
   get imeiOne() {
     return this.allphones.get('imeiOne')!;
   }
 
-  maskBrazilianDoc(event: KeyboardEvent) {
+  /*maskBrazilianDoc(event: KeyboardEvent) {
     this.formater = (<HTMLInputElement>event.target).value;
     if (this.formater.length == 3) {
       this.allphones.get('cpf')?.setValue(this.formater + '.');
@@ -65,5 +69,5 @@ export class RegisterPhoneComponent implements OnInit {
     if (this.formater.length == 11) {
       this.allphones.get('cpf')?.setValue(this.formater + '-');
     }
-  }
+  }*/
 }

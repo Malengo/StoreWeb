@@ -26,7 +26,7 @@
             <mat-hint>Especificações</mat-hint>
           </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
+          <mat-form-field class="col-4" appearance="outline">
             <mat-label>Cor</mat-label>
             <input
               matInput
@@ -36,7 +36,7 @@
             <mat-hint>Cor</mat-hint>
           </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
+          <mat-form-field class="col-4" appearance="outline">
             <mat-label>Capacidade</mat-label>
             <mat-select formControlName="capacity">
               <mat-option
@@ -47,6 +47,19 @@
               </mat-option>
             </mat-select>
             <mat-hint>Armazenamento do Celular</mat-hint>
+          </mat-form-field>
+
+           <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Memória</mat-label>
+            <mat-select formControlName="memory">
+              <mat-option
+                *ngFor="let anyMemory of keysMemory"
+                [value]="anyMemory"
+              >
+                {{ anyMemory }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Memória do Celular</mat-hint>
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
@@ -76,28 +89,28 @@
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
-            <mat-label>CPF</mat-label>
+            <mat-label>Imei 2</mat-label>
             <input
               id="imeiTwo"
               matInput
-              (keyup)="maskBrazilianDoc($event)"
-              formControlName="cpf"
+
+              formControlName="imeiTwo"
               placeholder="Digite o CPF"
-              minlength="14"
-              maxlength="14 "
+              minlength="15"
+              maxlength="15"
               required
             />
-            <mat-hint *ngIf="!imeiTwo.errors?.['minlength'] && !imeiTwo.errors?.['pattern']">CPF do Comprador</mat-hint>
+            <mat-hint *ngIf="!imeiTwo.errors?.['minlength'] && !imeiTwo.errors?.['pattern']">Imei 2</mat-hint>
 
            <mat-hint
               class="bg-danger h6 rounded col-6 text-center text-white"
               *ngIf="imeiTwo.errors?.['minlength']"
-              >CPF deve conter 12 números</mat-hint>
+              >Imei 2 deve conter 15 números</mat-hint>
             <mat-hint
             align="end"
               class="bg-danger h6 rounded col-6 text-center text-white"
               *ngIf="imeiTwo.errors?.['pattern']"
-              >CPF Inválido</mat-hint>
+              >Imei Inválido</mat-hint>
           </mat-form-field>
         </mat-card-content>
         <div class="col-4">
