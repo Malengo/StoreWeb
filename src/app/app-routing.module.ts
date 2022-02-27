@@ -12,6 +12,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./smartphones/smartphone.module').then((m) => m.SmartphoneModule),
   },
+  {
+    path: 'alterphone',
+    loadChildren: () =>
+      import('./alterphone/alterphone.module').then((m) => m.AlterphoneModule),
+  },
+  {
+    path: 'registerPhones',
+    loadChildren: () =>
+      import('./registerphone/registerphone.module').then((m) => m.RegisterphoneModule),
+  },
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
-import { Smartphone } from 'src/app/entites/smartphone';
+
+import { Smartphone } from '../models/entites/smartphone';
+
 
 @Injectable({
   providedIn: 'root',

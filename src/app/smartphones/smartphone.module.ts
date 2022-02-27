@@ -5,7 +5,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { SmartphoneRoutingModule } from './smartphone-routing.module';
-import { SmartphonesComponent } from './smartphones/smartphones.component';
+import { SmartphonesComponent } from './smartphones.component';
+
 
 
 @NgModule({

@@ -8,9 +8,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-
-import { RegisterPhoneComponent } from './register-phone/register-phone.component';
+import { RegisterPhoneComponent } from './register-phone.component';
 import { RegisterphoneRoutingModule } from './registerphone-routing.module';
+
+
 
 
 @NgModule({

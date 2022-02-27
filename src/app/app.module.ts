@@ -1,3 +1,4 @@
+import { AlterphoneModule } from './alterphone/alterphone.module';
 
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +13,7 @@ import { RegisterphoneModule } from './registerphone/registerphone.module';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,6 +24,7 @@ import { RegisterphoneModule } from './registerphone/registerphone.module';
     RegisterphoneModule,
     MatButtonModule,
     HttpClientModule,
+    AlterphoneModule
 
   ],
   providers: [],

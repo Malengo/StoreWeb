@@ -1,9 +1,11 @@
-import { RegisterPhoneComponent } from './register-phone/register-phone.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RegisterPhoneComponent } from './register-phone.component';
+
+
 const routes: Routes = [{
-  path: 'registerPhones', component: RegisterPhoneComponent
+  path: '', component: RegisterPhoneComponent
 }];
 
 @NgModule({

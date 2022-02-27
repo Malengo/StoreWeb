@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Capacity } from 'src/app/entites/enum/capacity.enum';
-import { Memory } from 'src/app/entites/enum/Memory.enum';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Capacity } from '../models/entites/enum/capacity.enum';
+import { Memory } from '../models/entites/enum/Memory.enum';
+
 
 import { PhoneServiceService } from '../service/phone-service.service';
 
