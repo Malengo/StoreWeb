@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
+import { AlterphoneComponent } from '../alterphone/alterphone.component';
 import { Smartphone } from '../models/entites/smartphone';
 import { PhoneServiceService } from '../service/phone-service.service';
-
-
 
 @Component({
   selector: 'app-smartphones',
@@ -21,10 +21,20 @@ export class SmartphonesComponent implements OnInit {
     'memory',
     'imeiOne',
     'imeiTwo',
+    'changeButton',
   ];
-  constructor(private servicePhone: PhoneServiceService) {
-     this.smartphone = this.servicePhone.allphone();
+  constructor(
+    private servicePhone: PhoneServiceService,
+    public dialog: MatDialog
+  ) {
+    this.smartphone = this.servicePhone.allphone();
   }
 
   ngOnInit(): void {}
+
+  openDialog(phone: Smartphone) {
+    const dialogRef = this.dialog.open(AlterphoneComponent, {
+      data: phone,
+    });
+  }
 }

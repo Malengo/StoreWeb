@@ -12,58 +12,11 @@ import { PhoneServiceService } from '../service/phone-service.service';
   styleUrls: ['./register-phone.component.css'],
 })
 export class RegisterPhoneComponent implements OnInit {
-  allphones!: FormGroup;
-  keys = Object.values(Capacity);
-  keysMemory = Object.values(Memory);
-  formater: String = '';
 
-  constructor(
-    private servicePhone: PhoneServiceService,
-    private allPhoneForm: FormBuilder
-  ) {}
-
-  ngOnInit(): void {
-    this.allphones = new FormGroup({
-      brand: new FormControl(),
-      modelDescription: new FormControl(),
-      color: new FormControl(),
-      capacity: new FormControl(),
-      memory: new FormControl(),
-      imeiOne: new FormControl('', [
-        Validators.minLength(15),
-        Validators.required,
-        Validators.pattern('^[0-9]*$'),
-      ]),
-      imeiTwo: new FormControl('', [
-        Validators.minLength(14),
-        Validators.required,
-        Validators.pattern('^[0-9]*$'),
-      ]),
-    });
+buttonName: string;
+  constructor() {
+    this.buttonName = 'Cadastrar';
   }
 
-  addInformation() {
-    this.servicePhone.addPhone(this.allphones.value);
-    this.allphones.reset();
-  }
-
-  get imeiTwo() {
-    return this.allphones.get('imeiTwo')!;
-  }
-  get imeiOne() {
-    return this.allphones.get('imeiOne')!;
-  }
-
-  /*maskBrazilianDoc(event: KeyboardEvent) {
-    this.formater = (<HTMLInputElement>event.target).value;
-    if (this.formater.length == 3) {
-      this.allphones.get('cpf')?.setValue(this.formater + '.');
-    }
-    if (this.formater.length == 7) {
-      this.allphones.get('cpf')?.setValue(this.formater + '.');
-    }
-    if (this.formater.length == 11) {
-      this.allphones.get('cpf')?.setValue(this.formater + '-');
-    }
-  }*/
+  ngOnInit(): void {}
 }
