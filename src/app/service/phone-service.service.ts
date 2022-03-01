@@ -1,5 +1,5 @@
-import { catchError, Observable, take } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Smartphone } from '../models/entites/smartphone';
