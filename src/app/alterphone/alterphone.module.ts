@@ -1,3 +1,4 @@
+import { FormPhoneModule } from './../form-phone/form-phone.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,11 +8,13 @@ import { AlterphoneComponent } from './alterphone.component';
 
 @NgModule({
   declarations: [
-    AlterphoneComponent
+    AlterphoneComponent,
   ],
   imports: [
     CommonModule,
-    AlterphoneRoutingModule
+    AlterphoneRoutingModule,
+    FormPhoneModule
+
   ]
 })
 export class AlterphoneModule { }
