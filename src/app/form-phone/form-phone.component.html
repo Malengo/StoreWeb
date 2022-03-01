@@ -1,0 +1,147 @@
+<form [formGroup]="allphones" (submit)="changePhone()">
+  <div class="row container-fluid">
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> {{ button }} Celulares </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field class="col-2" appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" readonly />
+          </mat-form-field>
+          <mat-form-field class="col-10" appearance="outline">
+            <mat-label>Marca</mat-label>
+            <input
+              matInput
+              formControlName="brand"
+              placeholder="Digite a marca"
+              [value]="data"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input
+              matInput
+              formControlName="modelDescription"
+              placeholder="Digite o Modelo do celular"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Cor</mat-label>
+            <input
+              matInput
+              formControlName="color"
+              placeholder="Digite a Cor do Celular"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Capacidade</mat-label>
+            <mat-select formControlName="capacity">
+              <mat-option
+                *ngFor="let anyCapacity of keys"
+                [value]="anyCapacity"
+              >
+                {{ anyCapacity }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Memória</mat-label>
+            <mat-select formControlName="memory">
+              <mat-option
+                *ngFor="let anyMemory of keysMemory"
+                [value]="anyMemory"
+              >
+                {{ anyMemory }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Imei 1</mat-label>
+            <input
+              matInput
+              formControlName="imeiOne"
+              placeholder="Digite o imei de número 1"
+              minlength="15"
+              maxlength="15"
+              required
+            />
+            <mat-hint
+              *ngIf="!imeiOne.errors?.['minlength'] && !imeiOne.errors?.['pattern']"
+              >Código do celular</mat-hint
+            >
+
+            <mat-hint
+              class="bg-light h6 rounded col-6 text-center text-danger"
+              *ngIf="imeiOne.errors?.['minlength']"
+              >IMEI deve conter 15 números</mat-hint
+            >
+            <mat-hint
+              align="end"
+              class="bg-light h6 rounded col-6 text-center text-danger"
+              *ngIf="imeiOne.errors?.['pattern']"
+              >IMEI deve conter apenas números</mat-hint
+            >
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Imei 2</mat-label>
+            <input
+              id="imeiTwo"
+              matInput
+              formControlName="imeiTwo"
+              placeholder="Digite o CPF"
+              minlength="15"
+              maxlength="15"
+              required
+            />
+            <mat-hint
+              *ngIf="!imeiTwo.errors?.['minlength'] && !imeiTwo.errors?.['pattern']"
+              >Imei 2</mat-hint
+            >
+
+            <mat-hint
+              class="bg-danger h6 rounded col-6 text-center text-white"
+              *ngIf="imeiTwo.errors?.['minlength']"
+              >Imei 2 deve conter 15 números</mat-hint
+            >
+            <mat-hint
+              align="end"
+              class="bg-danger h6 rounded col-6 text-center text-white"
+              *ngIf="imeiTwo.errors?.['pattern']"
+              >Imei Inválido</mat-hint
+            >
+          </mat-form-field>
+        </mat-card-content>
+        <div class="row">
+          <div class="col-6">
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="allphones.invalid"
+              type="submit"
+            >
+              {{ button }}
+            </button>
+          </div>
+          <div class="col-6 d-md-flex justify-content-md-end">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="closeForm()"
+              type="button"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</form>
