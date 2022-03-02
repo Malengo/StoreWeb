@@ -52,6 +52,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let phone">
         <button mat-raised-button color="accent" (click)="openDialog(phone)">Alterar</button>
+        <button mat-raised-button color="warn" class="delete" (click)="deletePhone(phone)">Excluir</button>
       </td>
     </ng-container>
 
