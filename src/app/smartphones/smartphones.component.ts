@@ -13,6 +13,7 @@ import { PhoneServiceService } from '../service/phone-service.service';
 })
 export class SmartphonesComponent implements OnInit {
   smartphone: Observable<Smartphone[]>;
+  fail: boolean | undefined;
   displayedColumns = [
     'brand',
     'modelDescription',
@@ -28,9 +29,18 @@ export class SmartphonesComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.smartphone = this.servicePhone.allphone();
+    this.smartphone.subscribe({
+      next: (v) => console.info(v),
+      error: (e) => {
+        this.fail = false;
+      },
+      complete: () => console.log("Ok")
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fail = true;
+  }
 
   openDialog(phone: Smartphone) {
     this.dialog.open(AlterphoneComponent, {
@@ -38,11 +48,11 @@ export class SmartphonesComponent implements OnInit {
     });
   }
 
-  deletePhone(phone: Smartphone){
+  deletePhone(phone: Smartphone) {
     this.servicePhone.delete(phone).subscribe({
       next: (v) => console.log(v),
       error: (e) => console.log(e),
-      complete: ()=> this.smartphone = this.servicePhone.allphone()
+      complete: () => (this.smartphone = this.servicePhone.allphone()),
     });
   }
 }
