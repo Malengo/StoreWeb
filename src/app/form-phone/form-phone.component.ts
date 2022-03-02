@@ -54,6 +54,8 @@ export class FormPhoneComponent implements OnInit {
       this.memory.setValue(this.data.memory);
       this.imeiOne.setValue(this.data.imeiOne);
       this.imeiTwo.setValue(this.data.imeiTwo);
+    }else{
+      this.id?.setValue(0);
     }
   }
   get id() {
@@ -84,14 +86,18 @@ export class FormPhoneComponent implements OnInit {
   changePhone() {
     switch (this.button) {
       case 'Cadastrar':
-        this.servicePhone.addPhone(this.allphones.value);
+        this.servicePhone.addPhone(this.allphones.value).subscribe({
+          next: (v) => console.log(v),
+          error: (e) => console.error(e),
+          complete: () => console.info('OK'),
+        });
         this.allphones.reset();
         break;
 
       case 'Alterar':
         this.servicePhone.alterPhone(this.allphones.value).subscribe({
           next: (v) => console.log(v),
-          error: (e) => {
+          error: (e) => {console.log(e);
             this.openMessageError('Erro ao alterar a informação');
           },
           complete: () => {
