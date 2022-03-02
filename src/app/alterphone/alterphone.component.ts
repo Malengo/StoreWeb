@@ -19,4 +19,9 @@ export class AlterphoneComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  closed(){
+
+    this.dialogRef.close();
+  }
 }
