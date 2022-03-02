@@ -1,1 +1,16 @@
-<app-form-phone [data] = data [button]= buttonName [dialog] = dialogRef></app-form-phone>
+<app-form-phone
+  [data]="data"
+  [button]="buttonName"
+  [dialog]="dialogRef"
+></app-form-phone>
+<div class="row">
+  <div class="col-9"></div>
+  <div class="col">
+    <button
+      class="btn btn-warning closed"
+      (click)="closed()"
+    >
+      Fechar
+    </button>
+  </div>
+</div>
