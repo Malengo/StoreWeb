@@ -33,8 +33,16 @@ export class SmartphonesComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog(phone: Smartphone) {
-    const dialogRef = this.dialog.open(AlterphoneComponent, {
+    this.dialog.open(AlterphoneComponent, {
       data: phone,
+    });
+  }
+
+  deletePhone(phone: Smartphone){
+    this.servicePhone.delete(phone).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.log(e),
+      complete: ()=> this.smartphone = this.servicePhone.allphone()
     });
   }
 }
