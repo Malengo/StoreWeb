@@ -34,7 +34,7 @@ export class SmartphonesComponent implements OnInit {
       error: (e) => {
         this.fail = false;
       },
-      complete: () => console.log("Ok")
+      complete: () => console.log('Ok'),
     });
   }
 
@@ -47,6 +47,7 @@ export class SmartphonesComponent implements OnInit {
       data: phone,
     });
   }
+
 
   deletePhone(phone: Smartphone) {
     this.servicePhone.delete(phone).subscribe({

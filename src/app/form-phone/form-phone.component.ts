@@ -102,16 +102,12 @@ export class FormPhoneComponent implements OnInit {
 
       case 'Alterar':
         this.servicePhone.alterPhone(this.allphones.value).subscribe({
-          next: (v) => console.log(v),
+          next: (v) => console.info(v),
           error: (e) => {
             console.log(e);
             this.openMessage('Erro ao alterar a informação');
           },
-          complete: () => {
-            this.openMessage('Alteração Realizada com sucesso');
-            this.closeForm();
-            window.location.reload();
-          },
+          complete: () => this.openMessage('Alteração Realizada com sucesso'),
         });
 
         break;

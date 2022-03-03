@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { Smartphone } from './../models/entites/smartphone';
@@ -9,7 +9,6 @@ import { Smartphone } from './../models/entites/smartphone';
   styleUrls: ['./alterphone.component.css'],
 })
 export class AlterphoneComponent implements OnInit {
-
   buttonName: string = 'Alterar';
 
   constructor(
@@ -20,8 +19,8 @@ export class AlterphoneComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  closed(){
-
+  closed() {
     this.dialogRef.close();
+    window.location.reload();
   }
 }
