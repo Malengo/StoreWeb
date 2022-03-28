@@ -34,7 +34,7 @@ export class SmartphonesComponent implements OnInit {
       error: (e) => {
         this.fail = false;
       },
-      complete: () => console.log('Ok'),
+      complete: () => console.info('Ok'),
     });
   }
 
@@ -43,16 +43,20 @@ export class SmartphonesComponent implements OnInit {
   }
 
   openDialog(phone: Smartphone) {
-    this.dialog.open(AlterphoneComponent, {
+   const view = this.dialog.open(AlterphoneComponent, {
       data: phone,
+    });
+
+    view.afterClosed().subscribe( result=>{
+      this.smartphone = this.servicePhone.allphone();
     });
   }
 
 
   deletePhone(phone: Smartphone) {
     this.servicePhone.delete(phone).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.log(e),
+      next: (v) => console.info(v),
+      error: (e) => console.info(e),
       complete: () => (this.smartphone = this.servicePhone.allphone()),
     });
   }
