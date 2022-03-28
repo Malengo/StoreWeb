@@ -21,6 +21,5 @@ export class AlterphoneComponent implements OnInit {
 
   closed() {
     this.dialogRef.close();
-    window.location.reload();
   }
 }
