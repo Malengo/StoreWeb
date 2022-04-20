@@ -24,16 +24,12 @@ export class SmartphonesComponent implements OnInit {
     'imeiTwo',
     'changeButton',
   ];
-  constructor(
-    private servicePhone: PhoneServiceService,
-    public dialog: MatDialog
-  ) {
+  constructor(private servicePhone: PhoneServiceService, public dialog: MatDialog )
+   {
     this.smartphone = this.servicePhone.allphone();
     this.smartphone.subscribe({
       next: (v) => console.info(v),
-      error: (e) => {
-        this.fail = false;
-      },
+      error: (e) => { this.fail = false; },
       complete: () => console.info('Ok'),
     });
   }
@@ -43,15 +39,14 @@ export class SmartphonesComponent implements OnInit {
   }
 
   openDialog(phone: Smartphone) {
-   const view = this.dialog.open(AlterphoneComponent, {
+    const view = this.dialog.open(AlterphoneComponent, {
       data: phone,
     });
 
-    view.afterClosed().subscribe( result=>{
+    view.afterClosed().subscribe((result) => {
       this.smartphone = this.servicePhone.allphone();
     });
   }
-
 
   deletePhone(phone: Smartphone) {
     this.servicePhone.delete(phone).subscribe({
